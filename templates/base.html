@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <meta name="author" content="eyob tariku">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="{% url 'shop:product_list' %}">My Shop</a>
+        </h1>
+    </header>
+
+    <div id="cart">
+        <p>Your cart is empty</p>
+    </div>
+
+    <br>
+    {% block content %}
+    {% endblock content %}
+    <br>
+    {% block aside %}
+    <aside>
+        <h3>Catagories</h3>
+        <ul>
+            {% for catagory in catagory_list %}
+            <li><a href="{{ catagory.get_absolute_url }}">{{ catagory.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </aside>
+    {% endblock aside %}
+</body>
+</html>

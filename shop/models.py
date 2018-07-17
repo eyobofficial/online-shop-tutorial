@@ -10,8 +10,6 @@ class Catagory(BaseModel):
     slug = models.SlugField(max_length=255, db_index=True, unique=True)
     description = models.TextField(blank=True)
 
-    objects = manager.CatagoryManager()
-
     class Meta:
         ordering = ('name', )
         verbose_name = 'catagory'
@@ -37,6 +35,8 @@ class Product(BaseModel):
     price = models.DecimalField(max_digits=12, decimal_places=2)
     stock = models.PositiveIntegerField(default=0)
     available = models.BooleanField(default=True)
+
+    objects = manager.ProductManager()
 
     class Meta:
         ordering = ('-created', )
