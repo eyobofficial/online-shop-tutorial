@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+from .managers import manager
 from core.models import BaseModel
 
 
@@ -8,6 +9,8 @@ class Catagory(BaseModel):
     name = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, db_index=True, unique=True)
     description = models.TextField(blank=True)
+
+    objects = manager.CatagoryManager()
 
     class Meta:
         ordering = ('name', )
